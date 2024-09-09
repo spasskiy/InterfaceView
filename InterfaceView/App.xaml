@@ -1,0 +1,17 @@
+﻿<Application x:Class="InterfaceView.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:InterfaceView"
+             StartupUri="View\MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <FontFamily x:Key="Cinematografica">pack://application:,,,/View/Fonts/Cinematografica-Regular.otf#Cinematografica</FontFamily>
+            <FontFamily x:Key="Bajazzo-Bd">pack://application:,,,/View/Fonts/Bajazzo-Bd.otf#Bajazzo-Bd</FontFamily>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Styles/BaseColors.xaml"/>
+                <ResourceDictionary Source="View/Styles/BaseStyles.xaml"/>
+                <ResourceDictionary Source="View/Styles/CustomWindow.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

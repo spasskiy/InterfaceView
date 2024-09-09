@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="TextBrush" Color="Black"/>
+    <SolidColorBrush x:Key="InactiveText" Color="Gray"/>
+    <SolidColorBrush x:Key="ForegroundBrush" Color="#F1F1FD"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="Silver"/>
+    <SolidColorBrush x:Key="ButtonUderMouse" Color="LightBlue"/>
+    <SolidColorBrush x:Key="TextButtonUderMouse" Color="DarkBlue"/>
+    <SolidColorBrush x:Key="InactiveButton" Color="Gray"/>
+
+</ResourceDictionary>
