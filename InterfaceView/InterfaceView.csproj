@@ -9,11 +9,62 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\background.png" />
     <None Remove="View\Fonts\Cinematografica-Regular.otf" />
+    <None Remove="View\Icons\DisPoll.png" />
+    <None Remove="View\Icons\Exclamation.png" />
+    <None Remove="View\Icons\Folder.png" />
+    <None Remove="View\Icons\Help.png" />
+    <None Remove="View\Icons\Info.png" />
+    <None Remove="View\Icons\LoadMap.PNG" />
+    <None Remove="View\Icons\protocol.png" />
+    <None Remove="View\Icons\Refresh.JPG" />
+    <None Remove="View\Icons\SaveIcon1.PNG" />
+    <None Remove="View\Icons\Tablitsa.png" />
+    <None Remove="View\Icons\Tekst.png" />
+    <None Remove="View\Icons\turnon.png" />
+    <None Remove="View\Icons\WriteReg.png" />
+    <None Remove="View\Icons\zaprosData.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="View\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\Fonts\Cinematografica-Regular.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\DisPoll.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\Folder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\Help.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\Info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\LoadMap.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\protocol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\SaveIcon1.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\Tablitsa.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\Tekst.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\turnon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\zaprosData.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -7,7 +7,7 @@
         <Setter Property="Padding" Value="2"/>
         <Setter Property="MinHeight" Value="25"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="Template">
+        <!--<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}">
@@ -27,7 +27,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource ButtonUderMouse}"/>
@@ -37,8 +37,30 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <!--Grid-->
-    <Style TargetType="Grid" x:Key="GridNoneStyle"/>
 
+    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="TopButton">
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    
+    
+    <!--Grid-->
+    <!--<Style TargetType="Grid">
+        <Setter Property="Background" Value="Red"/>
+    </Style>-->
+    <Style TargetType="Grid" x:Key="GridNoneStyle"/>
+    
+    <!--Menu-->
+    <Style TargetType="Menu">
+        <Setter Property="Background" Value="{DynamicResource MainBackgroundBrush}"/>
+    </Style>
+
+    <!--<Style TargetType="MenuItem">
+        <Setter Property="Background" Value="{DynamicResource MainBackgroundBrush}"/>
+    </Style>-->
 
 </ResourceDictionary>

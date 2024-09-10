@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterfaceView"
+        xmlns:view="clr-namespace:InterfaceView.View"
         mc:Ignorable="d"
         Style="{StaticResource CustomWindowStyle}"
         Title="MainWindow" Height="450" Width="800">
     <Grid Grid.Row="1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>            
             <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Демонстрационная версия приложения"
                  FontFamily="{StaticResource Bajazzo-Bd}"
@@ -19,22 +21,28 @@
                  Margin="10 -35 0 0"
                  FontSize="30"                          
              />
+        <StackPanel>
+            <view:AppUpMenu/>
+            <view:UpButtonPanel/>            
+        </StackPanel>        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="300*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="Red">
                 <Button Grid.Column="0"/>
             </Grid>            
-            <Grid Grid.Column="1" Background="Blue">
-                
+            <Grid Grid.Column="1" Background="Black">
+                <Image Source="/View/background.png" />
+                <view:MainViewField/>
             </Grid>
             <Grid Grid.Column="2" Background="Green">
                 <Button Grid.Column="2"/>
             </Grid>
             
         </Grid>
+        <view:BottomStatusBar Grid.Row="2" VerticalAlignment="Center"/>
     </Grid>
 </Window>
