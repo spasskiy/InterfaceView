@@ -16,13 +16,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using InterfaceView.Model;
 
 namespace InterfaceView.View
 {
     /// <summary>
-    /// Логика взаимодействия для Sotka1.xaml
+    /// Логика взаимодействия для RemoteDevice.xaml
     /// </summary>
-    public partial class Sotka1 : UserControl, IViewControl, INotifyPropertyChanged
+    public partial class RemoteDevice : UserControl, IViewControl, INotifyPropertyChanged
     {
         private string _viewControlName;
         public string ViewControlName
@@ -44,14 +45,51 @@ namespace InterfaceView.View
             get => _parent;
             set => SetOptions(nameof(Parent), ref _parent, value);
         }
-
         public ObservableCollection<IViewControl> Elements { get; set; }
-        public Sotka1(string name)
+
+        public ObservableCollection<NodeParam> NodeParams { get; set; }
+        public RemoteDevice(string name, ObservableCollection<NodeParam> Params)
         {
             ViewControlName = name;
-            IsActive = false;
+            NodeParams = Params;
+            FillGrid(ParamsGrid);
             InitializeComponent();
             DataContext = this;
+        }
+
+        public void FillGrid(Grid grid)
+        {
+            if (grid == null) return;
+
+            // Очистка существующих строк
+            grid.Children.Clear();
+            grid.RowDefinitions.Clear();
+
+            // Добавление строк для каждого параметра
+            for (int i = 0; i < NodeParams.Count; i++)
+            {
+                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+                var rowGrid = new Grid();
+                rowGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                rowGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                rowGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+                var paramNameTextBlock = new TextBlock { Text = NodeParams[i].ParamName };
+                var paramValueTextBlock = new TextBlock { Text = NodeParams[i].ParamValue.ToString() };
+                var measureUnitTextBlock = new TextBlock { Text = NodeParams[i].MeasureUnit };
+
+                Grid.SetRow(rowGrid, i);
+                Grid.SetColumn(paramNameTextBlock, 0);
+                Grid.SetColumn(paramValueTextBlock, 1);
+                Grid.SetColumn(measureUnitTextBlock, 2);
+
+                rowGrid.Children.Add(paramNameTextBlock);
+                rowGrid.Children.Add(paramValueTextBlock);
+                rowGrid.Children.Add(measureUnitTextBlock);
+
+                grid.Children.Add(rowGrid);
+            }
         }
 
         public void AddChildren(IViewControl element)

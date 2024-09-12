@@ -30,6 +30,13 @@ namespace InterfaceView.View
             set => SetOptions(nameof(ViewControlName), ref _viewControlName, value);
         }
 
+        private IViewControl _parent;
+        public IViewControl Parent
+        {
+            get => _parent;
+            set => SetOptions(nameof(Parent), ref _parent, value);
+        }
+
         private bool _isActive;
         public bool IsActive
         {
@@ -51,7 +58,7 @@ namespace InterfaceView.View
             set => SetOptions(nameof(CountOfNodes), ref _countOfNodes, value);
         }
 
-        public ObservableCollection<INotifyPropertyChanged> Elements { get; set; }
+        public ObservableCollection<IViewControl> Elements { get; set; }
 
         public Sotka2(string name)
         {
@@ -59,7 +66,7 @@ namespace InterfaceView.View
             ViewControlName = name;
             DataContext = this;
 
-            Elements = new ObservableCollection<INotifyPropertyChanged>();
+            Elements = new ObservableCollection<IViewControl>();
             Elements.CollectionChanged += Elements_CollectionChanged;
 
             foreach (var element in Elements)
@@ -110,6 +117,11 @@ namespace InterfaceView.View
         private void UpdateActiveNodes()
         {
             ActiveNodes = Elements.Count(element => (element as dynamic).IsActive);
+        }
+
+        public void AddChildren(IViewControl element)
+        {
+            Elements.Add(element);
         }
 
         #region INotifyPropertyChanged
