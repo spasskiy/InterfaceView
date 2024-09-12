@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceView.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,15 @@ namespace InterfaceView.View
     /// </summary>
     public partial class UpButtonPanel : UserControl
     {
+        public static readonly DependencyProperty SaveCommandProperty =
+            DependencyProperty.Register("SaveCommand", typeof(ICommand), typeof(UpButtonPanel), new PropertyMetadata(null));
+
+        public ICommand SaveCommand
+        {
+            get { return (ICommand)GetValue(SaveCommandProperty); }
+            set { SetValue(SaveCommandProperty, value); }
+        }
+
         public UpButtonPanel()
         {
             InitializeComponent();

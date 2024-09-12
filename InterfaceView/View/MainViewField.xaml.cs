@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,49 +28,146 @@ namespace InterfaceView.View
         public MainViewField()
         {
             InitializeComponent();
+            LoadFromXml("canvasData.xml");
+        }
 
-            var sotka = new Sotka2("ЛПУ");
-            Canvas.SetLeft(sotka, 50);
-            Canvas.SetTop(sotka, 50);
-            sotka.PreviewMouseDown += FrameworkElement_PreviewMouseDown;
-            sotka.PreviewMouseMove += FrameworkElement_PreviewMouseMove;
-            sotka.PreviewMouseUp += FrameworkElement_PreviewMouseUp;
-            canvas.Children.Add(sotka);
-
-            var sotka1 = new Sotka1("ЛЭС1");
-            sotka1.Parent = sotka;
-            Canvas.SetLeft(sotka1, 150);
-            Canvas.SetTop(sotka1, 150);
-            sotka1.PreviewMouseDown += FrameworkElement_PreviewMouseDown;
-            sotka1.PreviewMouseMove += FrameworkElement_PreviewMouseMove;
-            sotka1.PreviewMouseUp += FrameworkElement_PreviewMouseUp;
-            canvas.Children.Add(sotka1);
-
-            var device1 = new RemoteDevice("BKM1", new ObservableCollection<NodeParam>
+        private void LoadFromXml(string filePath)
+        {
+            if (!File.Exists(filePath))
             {
-                new NodeParam("Напряжение", 10, "V"),
-                new NodeParam("Сопротивление", 20, "Ω"),
-                new NodeParam("Температура", 30, "℃")
-            });
-            device1.Parent = sotka1;
-            Canvas.SetLeft(device1, 250);
-            Canvas.SetTop(device1, 250);
-            device1.PreviewMouseDown += FrameworkElement_PreviewMouseDown;
-            device1.PreviewMouseMove += FrameworkElement_PreviewMouseMove;
-            device1.PreviewMouseUp += FrameworkElement_PreviewMouseUp;
-            canvas.Children.Add(device1);
-
-            // Собираем детей с IViewControl
-            foreach (var view in canvas.Children)
-            {
-                if (view is IViewControl viewControl)
+                // Создаем файл с базовыми данными, если он не существует
+                var canvasData = new CanvasData
                 {
-                    _viewControls.Add(viewControl);
-                    viewControl.PropertyChanged += OnViewControlPropertyChanged;
+                    Controls = new List<ViewControlData>
+            {
+                new ViewControlData
+                {
+                    Name = "Sotka2",
+                    Left = 50,
+                    Top = 50,
+                    IsActive = true
+                },
+                new ViewControlData
+                {
+                    Name = "Sotka1",
+                    Left = 150,
+                    Top = 150,
+                    IsActive = true,
+                    ParentName = "Sotka2"
+                },
+                new ViewControlData
+                {
+                    Name = "RemoteDevice",
+                    Left = 250,
+                    Top = 250,
+                    IsActive = true,
+                    ParentName = "Sotka1"
                 }
             }
+                };
 
+                SerializationHelper.SerializeToFile(canvasData, filePath);
+            }
+
+            var loadedCanvasData = SerializationHelper.DeserializeFromFile<CanvasData>(filePath);
+            if (loadedCanvasData != null)
+            {
+                foreach (var controlData in loadedCanvasData.Controls)
+                {
+                    CreateControl(controlData, canvas);
+                }
+                UpdateLines();
+            }
+        }
+
+        private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
             UpdateLines();
+        }
+
+        private IViewControl CreateControl(ViewControlData controlData, Canvas canvas, IViewControl parent = null)
+        {
+            IViewControl control = null;
+            switch (controlData.Name)
+            {
+                case "Sotka2":
+                    control = new Sotka2(controlData.Name);
+                    break;
+                case "Sotka1":
+                    control = new Sotka1(controlData.Name);
+                    break;
+                case "RemoteDevice":
+                    control = new RemoteDevice(controlData.Name, new ObservableCollection<NodeParam>());
+                    break;
+                    // Добавьте другие типы контролов, если необходимо
+            }
+
+            if (control != null)
+            {
+                Canvas.SetLeft(control as FrameworkElement, controlData.Left);
+                Canvas.SetTop(control as FrameworkElement, controlData.Top);
+                control.IsActive = controlData.IsActive;
+
+                // Устанавливаем родительский элемент
+                control.Parent = parent;
+
+                foreach (var childData in controlData.Children)
+                {
+                    var child = CreateControl(childData, canvas, control);
+                    if (child != null)
+                    {
+                        control.AddChildren(child);
+                    }
+                }
+
+                // Подключаем события для перетаскивания
+                var frameworkElement = control as FrameworkElement;
+                if (frameworkElement != null)
+                {
+                    frameworkElement.PreviewMouseDown += FrameworkElement_PreviewMouseDown;
+                    frameworkElement.PreviewMouseMove += FrameworkElement_PreviewMouseMove;
+                    frameworkElement.PreviewMouseUp += FrameworkElement_PreviewMouseUp;
+                }
+
+                // Добавляем элемент на Canvas
+                canvas.Children.Add(control as UIElement);
+                _viewControls.Add(control);
+            }
+
+            return control;
+        }
+
+
+        public void SaveToXml(string filePath)
+        {
+            var canvasData = new CanvasData();
+            foreach (var control in _viewControls)
+            {
+                var controlData = new ViewControlData
+                {
+                    Name = control.ViewControlName,
+                    Left = Canvas.GetLeft(control as FrameworkElement),
+                    Top = Canvas.GetTop(control as FrameworkElement),
+                    IsActive = control.IsActive,
+                    ParentName = control.Parent?.ViewControlName
+                };
+
+                foreach (var child in control.Elements)
+                {
+                    controlData.Children.Add(new ViewControlData
+                    {
+                        Name = child.ViewControlName,
+                        Left = Canvas.GetLeft(child as FrameworkElement),
+                        Top = Canvas.GetTop(child as FrameworkElement),
+                        IsActive = child.IsActive,
+                        ParentName = child.Parent?.ViewControlName
+                    });
+                }
+
+                canvasData.Controls.Add(controlData);
+            }
+
+            SerializationHelper.SerializeToFile(canvasData, filePath);
         }
 
         private void FrameworkElement_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -111,10 +209,7 @@ namespace InterfaceView.View
             draggableControl.ReleaseMouseCapture();
         }
 
-        private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            UpdateLines();
-        }
+
 
         private void UpdateLines()
         {

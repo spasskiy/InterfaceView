@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="canvasData.xml" />
     <None Remove="View\background.png" />
     <None Remove="View\Fonts\Cinematografica-Regular.otf" />
     <None Remove="View\Icons\DisPoll.png" />
@@ -28,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="AssemblyInfo.cs" />
     <Content Include="View\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -67,6 +73,12 @@
     <Content Include="View\Icons\zaprosData.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="canvasData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -49,6 +49,7 @@ namespace InterfaceView.View
         public Sotka1(string name)
         {
             ViewControlName = name;
+            Elements = new();
             IsActive = false;
             InitializeComponent();
             DataContext = this;

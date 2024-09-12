@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Controls>
+		<ViewControlData>
+			<Name>Sotka2</Name>
+			<Left>50</Left>
+			<Top>50</Top>
+			<IsActive>true</IsActive>
+			<Children>
+				<ViewControlData>
+					<Name>Sotka1</Name>
+					<Left>150</Left>
+					<Top>150</Top>
+					<IsActive>true</IsActive>
+					<ParentName>Sotka2</ParentName>
+					<Children>
+						<ViewControlData>
+							<Name>RemoteDevice</Name>
+							<Left>250</Left>
+							<Top>250</Top>
+							<IsActive>true</IsActive>
+							<ParentName>Sotka1</ParentName>
+						</ViewControlData>
+					</Children>
+				</ViewControlData>
+			</Children>
+		</ViewControlData>
+	</Controls>
+</CanvasData>

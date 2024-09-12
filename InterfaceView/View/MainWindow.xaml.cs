@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using InterfaceView.Model;
+using InterfaceView.View;
+using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,7 +24,28 @@ namespace InterfaceView
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
-      
+
+        public ICommand SaveCommand => new RelayCommand(SaveToXml);
+
+        private void SaveToXml()
+        {
+            var mainViewField = FindName("MainViewField") as MainViewField;
+            if (mainViewField != null)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*",
+                    DefaultExt = "xml",
+                    FileName = "canvasData.xml"
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    mainViewField.SaveToXml(saveFileDialog.FileName);
+                }
+            }
+        }
     }
 }

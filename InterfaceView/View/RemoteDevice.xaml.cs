@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace InterfaceView.View
 {
@@ -50,6 +51,7 @@ namespace InterfaceView.View
         public RemoteDevice(string name, ObservableCollection<NodeParam> Params)
         {
             ViewControlName = name;
+            Elements = new();
             NodeParams = Params;
             FillGrid(ParamsGrid);
             InitializeComponent();
