@@ -1,22 +1,12 @@
-﻿using InterfaceView.View.Interfaces;
+﻿using InterfaceView.Model;
+using InterfaceView.View.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Linq;
-using InterfaceView.Model;
 
 namespace InterfaceView.View
 {
@@ -36,7 +26,15 @@ namespace InterfaceView.View
         public bool IsActive
         {
             get => _isActive;
-            set => SetOptions(nameof(IsActive), ref _isActive, value);
+            set 
+            {
+                SetOptions(nameof(IsActive), ref _isActive, value);
+                if(Parent != null)
+                {
+                    Parent.IsActive = value;
+                }
+            }
+
         }
 
         private IViewControl _parent;
@@ -45,9 +43,10 @@ namespace InterfaceView.View
             get => _parent;
             set => SetOptions(nameof(Parent), ref _parent, value);
         }
-        public ObservableCollection<IViewControl> Elements { get; set; }
 
+        public ObservableCollection<IViewControl> Elements { get; set; } = new ObservableCollection<IViewControl>();
         public ObservableCollection<NodeParam> NodeParams { get; set; }
+
         public RemoteDevice(string name, ObservableCollection<NodeParam> Params)
         {
             ViewControlName = name;
@@ -55,6 +54,15 @@ namespace InterfaceView.View
             FillGrid(ParamsGrid);
             InitializeComponent();
             DataContext = this;
+
+            // Подписываемся на событие PropertyChanged для каждого параметра
+            foreach (var param in NodeParams)
+            {
+                param.PropertyChanged += OnParamValueChanged;
+            }
+
+            // Инициализируем IsActive
+            UpdateIsActive();
         }
 
         public void FillGrid(Grid grid)
@@ -95,6 +103,19 @@ namespace InterfaceView.View
         public void AddChildren(IViewControl element)
         {
             Elements.Add(element);
+        }
+
+        private void OnParamValueChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(NodeParam.ParamValue))
+            {
+                UpdateIsActive();
+            }
+        }
+
+        private void UpdateIsActive()
+        {
+            IsActive = NodeParams.All(param => param.ParamValue >= 0);
         }
 
         #region INotifyPropertyChanged

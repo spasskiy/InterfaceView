@@ -3,6 +3,7 @@ using InterfaceView.View.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,7 @@ namespace InterfaceView.View
         private Point _startPoint;
         private bool _isDragging;
         private List<Line> _lines = new List<Line>();
+        private List<IViewControl> _viewControls = new List<IViewControl>();
 
         public MainViewField()
         {
@@ -58,10 +60,13 @@ namespace InterfaceView.View
             canvas.Children.Add(device1);
 
             // Собираем детей с IViewControl
-            List<IViewControl> views = new List<IViewControl>();
             foreach (var view in canvas.Children)
             {
-                if (view is IViewControl) views.Add((IViewControl)view);
+                if (view is IViewControl viewControl)
+                {
+                    _viewControls.Add(viewControl);
+                    viewControl.PropertyChanged += OnViewControlPropertyChanged;
+                }
             }
 
             UpdateLines();
@@ -120,14 +125,7 @@ namespace InterfaceView.View
             }
             _lines.Clear();
 
-            // Собираем все элементы, реализующие IViewControl
-            List<IViewControl> views = new List<IViewControl>();
-            foreach (var view in canvas.Children)
-            {
-                if (view is IViewControl) views.Add((IViewControl)view);
-            }
-
-            DrawLines(canvas, views);
+            DrawLines(canvas, _viewControls);
         }
 
         private void DrawLines(Canvas canvas, IEnumerable<IViewControl> controls)
@@ -163,7 +161,7 @@ namespace InterfaceView.View
                         };
 
                         // Устанавливаем цвет линии в зависимости от IsActive
-                        line.Stroke = (control as IViewControl).IsActive ? Brushes.Blue : Brushes.Red;
+                        line.Stroke = control.IsActive ? Brushes.Blue : Brushes.Red;
 
                         canvas.Children.Insert(0, line); // Добавляем линию в начало коллекции
                         _lines.Add(line);
@@ -172,6 +170,14 @@ namespace InterfaceView.View
 
                 // Рекурсивно обрабатываем дочерние элементы
                 DrawLines(canvas, control.Elements);
+            }
+        }
+
+        private void OnViewControlPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(IViewControl.IsActive))
+            {
+                UpdateLines();
             }
         }
     }
