@@ -15,12 +15,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Демонстрационная версия приложения"
+        <TextBlock Text="Системе оперативной телеметрии и комплексного анализа второго уровня"
                  FontFamily="{StaticResource Bajazzo-Bd}"
 
                  HorizontalAlignment="Left" 
-                 Margin="10 -35 0 0"
-                 FontSize="30"                          
+                 Margin="10 -30 0 0"
+                 FontSize="20"                          
              />
         <StackPanel>
             <view:AppUpMenu/>
@@ -28,12 +28,12 @@
         </StackPanel>        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="300*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="Red">
-                <Button Grid.Column="0"/>
+                <view:ItemTreeViewControl x:Name="ItemTreeViewControl" Canvas="{Binding ElementName=MainViewField, Path=canvas}"/>
             </Grid>            
             <Grid Grid.Column="1" Background="Black">
                 <!--<Image Source="/View/background.png" />-->

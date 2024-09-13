@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <None Remove="View\Icons\Help.png" />
     <None Remove="View\Icons\Info.png" />
     <None Remove="View\Icons\LoadMap.PNG" />
+    <None Remove="View\Icons\Logo.ico" />
     <None Remove="View\Icons\protocol.png" />
     <None Remove="View\Icons\Refresh.JPG" />
     <None Remove="View\Icons\SaveIcon1.PNG" />
@@ -34,6 +36,7 @@
 
   <ItemGroup>
     <Content Include="AssemblyInfo.cs" />
+    <Content Include="Logo.ico" />
     <Content Include="View\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -53,6 +56,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Icons\LoadMap.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Icons\Logo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Icons\protocol.png">

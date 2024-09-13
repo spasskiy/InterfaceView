@@ -16,6 +16,12 @@ namespace InterfaceView.View
     /// </summary>
     public partial class Sotka1 : UserControl, IViewControl, INotifyPropertyChanged
     {
+        private string _viewControlType;
+        public string ViewControlType
+        {
+            get => _viewControlType;
+            set => SetOptions(nameof(ViewControlType), ref _viewControlType, value);
+        }
         private string _viewControlName;
         public string ViewControlName
         {
@@ -63,6 +69,7 @@ namespace InterfaceView.View
         public Sotka1(string name, string ipAddress)
         {
             ViewControlName = name;
+            ViewControlType = "Sotka1";
             IPAddress = new IPAddress(ipAddress);
             Elements = new ObservableCollection<IViewControl>();
             IsActive = false;

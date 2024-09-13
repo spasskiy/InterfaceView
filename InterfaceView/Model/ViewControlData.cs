@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace InterfaceView.Model
 {
     [Serializable]
     public class ViewControlData
     {
-        public string Name { get; set; }
+        public string ViewControlType { get; set; } // Изменено на ViewControlType
+        public string ViewControlName { get; set; } // Добавлено ViewControlName
         public double Left { get; set; }
         public double Top { get; set; }
         public bool IsActive { get; set; }

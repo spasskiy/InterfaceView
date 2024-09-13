@@ -13,6 +13,7 @@ namespace InterfaceView.View.Interfaces
     /// </summary>
     public interface IViewControl : INotifyPropertyChanged
     {
+        string ViewControlType { get; }
         string ViewControlName { get; }
         bool IsActive { get; set; }
         ObservableCollection<IViewControl> Elements { get; set; }

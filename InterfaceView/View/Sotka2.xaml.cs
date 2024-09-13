@@ -24,6 +24,12 @@ namespace InterfaceView.View
     /// </summary>
     public partial class Sotka2 : UserControl, IViewControl, INotifyPropertyChanged
     {
+        private string _viewControlType;
+        public string ViewControlType
+        {
+            get => _viewControlType;
+            set => SetOptions(nameof(ViewControlType), ref _viewControlType, value);
+        }
         private string _viewControlName;
         public string ViewControlName
         {
@@ -72,6 +78,7 @@ namespace InterfaceView.View
         {
             InitializeComponent();
             ViewControlName = name;
+            ViewControlType = "Sotka2";
             DataContext = this;
 
             Elements = new ObservableCollection<IViewControl>();

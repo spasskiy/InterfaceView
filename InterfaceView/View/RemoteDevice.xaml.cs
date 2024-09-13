@@ -22,6 +22,13 @@ namespace InterfaceView.View
             get => _viewControlName;
             set => SetOptions(nameof(ViewControlName), ref _viewControlName, value);
         }
+        private string _viewControlType;
+        public string ViewControlType
+        {
+            get => _viewControlType;
+            set => SetOptions(nameof(ViewControlType), ref _viewControlType, value);
+        }
+
 
         private bool _isActive;
         public bool IsActive
@@ -51,6 +58,7 @@ namespace InterfaceView.View
         public RemoteDevice(string name, ObservableCollection<NodeParam> Params)
         {
             ViewControlName = name;
+            ViewControlType = "RemoteDevice";
             Elements = new();
             NodeParams = Params;
             FillGrid(ParamsGrid);

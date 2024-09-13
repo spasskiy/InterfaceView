@@ -168,7 +168,8 @@ namespace InterfaceView.View
         {
             var controlData = new ViewControlData
             {
-                Name = control.ViewControlName,
+                ViewControlType = control.ViewControlType,
+                ViewControlName = control.ViewControlName,
                 Left = Canvas.GetLeft(control as FrameworkElement),
                 Top = Canvas.GetTop(control as FrameworkElement),
                 IsActive = control.IsActive,
@@ -214,33 +215,36 @@ namespace InterfaceView.View
                 var canvasData = new CanvasData
                 {
                     Controls = new List<ViewControlData>
-                    {
-                        new ViewControlData
-                        {
-                            Name = "Sotka2",
-                            Left = 50,
-                            Top = 50,
-                            IsActive = true,
-                            IPAddress = "10.10.11.21" // Добавлен IP-адрес
-                        },
-                        new ViewControlData
-                        {
-                            Name = "Sotka1",
-                            Left = 150,
-                            Top = 150,
-                            IsActive = true,
-                            ParentName = "Sotka2",
-                            IPAddress = "10.10.12.11" // Добавлен IP-адрес
-                        },
-                        new ViewControlData
-                        {
-                            Name = "RemoteDevice",
-                            Left = 250,
-                            Top = 250,
-                            IsActive = true,
-                            ParentName = "Sotka1"
-                        }
-                    }
+            {
+                new ViewControlData
+                {
+                    ViewControlType = "Sotka2",
+                    ViewControlName = "Sotka2",
+                    Left = 50,
+                    Top = 50,
+                    IsActive = true,
+                    IPAddress = "10.10.11.21" 
+                },
+                new ViewControlData
+                {
+                    ViewControlType = "Sotka1", 
+                    ViewControlName = "Sotka1",
+                    Left = 150,
+                    Top = 150,
+                    IsActive = true,
+                    ParentName = "Sotka2",
+                    IPAddress = "10.10.12.11"
+                },
+                new ViewControlData
+                {
+                    ViewControlType = "RemoteDevice", 
+                    ViewControlName = "RemoteDevice",
+                    Left = 250,
+                    Top = 250,
+                    IsActive = true,
+                    ParentName = "Sotka1"
+                }
+            }
                 };
 
                 SerializationHelper.SerializeToFile(canvasData, filePath);
@@ -258,7 +262,7 @@ namespace InterfaceView.View
                     var control = CreateControl(controlData, canvas);
                     if (control != null)
                     {
-                        controlDictionary[controlData.Name] = control;
+                        controlDictionary[controlData.ViewControlType] = control; // Изменено на ViewControlType
                     }
                 }
 
@@ -267,7 +271,7 @@ namespace InterfaceView.View
                 {
                     if (controlData.ParentName != null)
                     {
-                        var control = controlDictionary[controlData.Name];
+                        var control = controlDictionary[controlData.ViewControlType]; // Изменено на ViewControlType
                         var parent = controlDictionary[controlData.ParentName];
                         control.Parent = parent;
                         parent.AddChildren(control);
@@ -281,13 +285,13 @@ namespace InterfaceView.View
         private IViewControl CreateControl(ViewControlData controlData, Canvas canvas, IViewControl parent = null)
         {
             IViewControl control = null;
-            switch (controlData.Name)
+            switch (controlData.ViewControlType) // Изменено на ViewControlType
             {
                 case "Sotka2":
-                    control = new Sotka2(controlData.Name, controlData.IPAddress); // Используем новый конструктор
+                    control = new Sotka2(controlData.ViewControlName, controlData.IPAddress); // Используем ViewControlName и IPAddress
                     break;
                 case "Sotka1":
-                    control = new Sotka1(controlData.Name, controlData.IPAddress); // Используем новый конструктор
+                    control = new Sotka1(controlData.ViewControlName, controlData.IPAddress); // Используем ViewControlName и IPAddress
                     break;
                 case "RemoteDevice":
                     // Создаем NodeParams для каждого RemoteDevice
@@ -297,7 +301,7 @@ namespace InterfaceView.View
                         var nodeParam = new NodeParam(nodeParamData.ParamName, nodeParamData.ParamValue, nodeParamData.MeasureUnit);
                         nodeParams.Add(nodeParam);
                     }
-                    control = new RemoteDevice(controlData.Name, nodeParams);
+                    control = new RemoteDevice(controlData.ViewControlName, nodeParams); // Используем ViewControlName
                     break;
                     // Добавьте другие типы контролов, если необходимо
             }
