@@ -32,62 +32,63 @@
         </DataTemplate>
     </UserControl.Resources>
 
-
-    <Border BorderThickness="2" BorderBrush="Black">
-        <Grid Height="100" Width="200" Background="LightGray">
-            <StackPanel Margin=" 0 5 0 0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Left"  FontWeight="Bold"  Text="{Binding ViewControlName, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Ellipse x:Name="Light" Width="15" Height="15" Stroke="Black" StrokeThickness="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Ellipse.Style>
-                            <Style TargetType="Ellipse">
-                                <Setter Property="Fill" Value="Green"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsActive}" Value="False">
-                                        <DataTrigger.EnterActions>
-                                            <BeginStoryboard>
-                                                <Storyboard RepeatBehavior="Forever">
-                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)">
-                                                        <DiscreteColorKeyFrame KeyTime="0:0:0" Value="Red"/>
-                                                        <DiscreteColorKeyFrame KeyTime="0:0:0.5" Value="Black"/>
-                                                        <DiscreteColorKeyFrame KeyTime="0:0:1" Value="Red"/>
-                                                    </ColorAnimationUsingKeyFrames>
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </DataTrigger.EnterActions>
-                                        <DataTrigger.ExitActions>
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <ColorAnimation Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)" To="Green" Duration="0:0:0.5"/>
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </DataTrigger.ExitActions>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Ellipse.Style>
-                    </Ellipse>
-                </Grid>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Параметры" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 2"/>
-                    <Grid Grid.Row="1" x:Name="ParamsGrid" Margin="2">
-                        <ItemsControl x:Name="NodeParamsItemsControl" ItemsSource="{Binding NodeParams}">
-                            <ItemsControl.ItemTemplate>
-                                <StaticResource ResourceKey="NodeParamTemplate"/>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+    <Grid Background="{DynamicResource ViewCotrolBackground}">
+        <Border BorderThickness="2" BorderBrush="Black" Margin="2">
+            <Grid Height="100" Width="200">
+                <StackPanel Margin=" 0 5 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left"  FontWeight="Bold"  Text="{Binding ViewControlName, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Ellipse x:Name="Light" Width="15" Height="15" Stroke="Black" StrokeThickness="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Setter Property="Fill" Value="Green"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard RepeatBehavior="Forever">
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)">
+                                                            <DiscreteColorKeyFrame KeyTime="0:0:0" Value="Red"/>
+                                                            <DiscreteColorKeyFrame KeyTime="0:0:0.5" Value="Black"/>
+                                                            <DiscreteColorKeyFrame KeyTime="0:0:1" Value="Red"/>
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)" To="Green" Duration="0:0:0.5"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
                     </Grid>
-                </Grid>
-            </StackPanel>
-        </Grid>
-    </Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Параметры" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 2"/>
+                        <Grid Grid.Row="1" x:Name="ParamsGrid" Margin="5 3">
+                            <ItemsControl x:Name="NodeParamsItemsControl" ItemsSource="{Binding NodeParams}">
+                                <ItemsControl.ItemTemplate>
+                                    <StaticResource ResourceKey="NodeParamTemplate"/>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>  
 </UserControl>

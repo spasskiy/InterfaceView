@@ -9,7 +9,7 @@
     <Menu VerticalAlignment="Top">
         <MenuItem Header="Файл">
             <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
-            <MenuItem Header="Созранить" Command="{Binding SaveCommand}" />
+            <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
             <Separator />
             <MenuItem Header="Выход" Command="{Binding ExitCommand}" />
         </MenuItem>

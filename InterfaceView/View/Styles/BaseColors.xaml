@@ -9,5 +9,6 @@
     <SolidColorBrush x:Key="ButtonUderMouse" Color="LightBlue"/>
     <SolidColorBrush x:Key="TextButtonUderMouse" Color="DarkBlue"/>
     <SolidColorBrush x:Key="InactiveButton" Color="Gray"/>
+    <SolidColorBrush x:Key="ViewCotrolBackground" Color="LightGray"/>
 
 </ResourceDictionary>

@@ -4,17 +4,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml.Linq;
 using InterfaceView.Model;
 
@@ -55,19 +46,58 @@ namespace InterfaceView.View
 
         public ObservableCollection<IViewControl> Elements { get; set; }
 
+        private int _countOfNodes;
+        public int CountOfNodes
+        {
+            get => _countOfNodes;
+            private set => SetOptions(nameof(CountOfNodes), ref _countOfNodes, value);
+        }
+
+        private int _activeNodes;
+        public int ActiveNodes
+        {
+            get => _activeNodes;
+            set => SetOptions(nameof(ActiveNodes), ref _activeNodes, value);
+        }
+
         public Sotka1(string name, string ipAddress)
         {
             ViewControlName = name;
             IPAddress = new IPAddress(ipAddress);
-            Elements = new();
+            Elements = new ObservableCollection<IViewControl>();
             IsActive = false;
             InitializeComponent();
             DataContext = this;
+
+            // Подписываемся на событие CollectionChanged коллекции Elements
+            Elements.CollectionChanged += Elements_CollectionChanged;
+        }
+
+        private void Elements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            UpdateCounts();
         }
 
         public void AddChildren(IViewControl element)
         {
             Elements.Add(element);
+            element.PropertyChanged += Child_PropertyChanged;
+            UpdateCounts();
+        }
+
+        private void Child_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(IViewControl.IsActive))
+            {
+                UpdateCounts();
+            }
+        }
+
+        private void UpdateCounts()
+        {
+            CountOfNodes = Elements.Count;
+            ActiveNodes = Elements.Count(e => e.IsActive);
+            IsActive = CountOfNodes == ActiveNodes;
         }
 
         #region INotifyPropertyChanged
