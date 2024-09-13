@@ -6,14 +6,15 @@
              xmlns:local="clr-namespace:InterfaceView.View"
              mc:Ignorable="d">
     <Border BorderThickness="2" BorderBrush="Black">
-        <Grid Height="100" Width="120" Background="LightGray">
-            <StackPanel Margin=" 0 5 0 0">                
+        <Grid Height="115" Width="120" Background="LightGray">
+            <StackPanel Margin=" 0 5 0 0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left"  FontWeight="Bold"  Text="{Binding ViewControlName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left"  FontWeight="Bold"  Margin="0 20 0 0" Text="{Binding IPAddress, UpdateSourceTrigger=PropertyChanged}"/>
                     <Ellipse x:Name="Light" Width="15" Height="15" Stroke="Black" StrokeThickness="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Ellipse.Style>
                             <Style TargetType="Ellipse">

@@ -31,21 +31,18 @@ namespace InterfaceView
 
         private void SaveToXml()
         {
-            var mainViewField = FindName("MainViewField") as MainViewField;
-            if (mainViewField != null)
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                SaveFileDialog saveFileDialog = new SaveFileDialog
-                {
-                    Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*",
-                    DefaultExt = "xml",
-                    FileName = "canvasData.xml"
-                };
+                Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*",
+                DefaultExt = "xml",
+                FileName = "canvasData.xml"
+            };
 
-                if (saveFileDialog.ShowDialog() == true)
-                {
-                    mainViewField.SaveToXml(saveFileDialog.FileName);
-                }
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                MainViewField.SaveToXml(saveFileDialog.FileName);
             }
+
         }
     }
 }

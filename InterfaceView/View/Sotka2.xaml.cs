@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using InterfaceView.Model;
 
 namespace InterfaceView.View
 {
@@ -58,9 +59,16 @@ namespace InterfaceView.View
             set => SetOptions(nameof(CountOfNodes), ref _countOfNodes, value);
         }
 
+        private IPAddress _ipAddress;
+        public IPAddress IPAddress
+        {
+            get => _ipAddress;
+            set => SetOptions(nameof(IPAddress), ref _ipAddress, value);
+        }
+
         public ObservableCollection<IViewControl> Elements { get; set; }
 
-        public Sotka2(string name)
+        public Sotka2(string name, string ipAddress)
         {
             InitializeComponent();
             ViewControlName = name;
@@ -76,6 +84,9 @@ namespace InterfaceView.View
                     notifyPropertyChangedElement.PropertyChanged += Element_PropertyChanged;
                 }
             }
+
+            // Инициализация IP-адреса из строки
+            IPAddress = new IPAddress(ipAddress);
         }
 
         private void Elements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

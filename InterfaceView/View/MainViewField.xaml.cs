@@ -91,10 +91,10 @@ namespace InterfaceView.View
             switch (controlData.Name)
             {
                 case "Sotka2":
-                    control = new Sotka2(controlData.Name);
+                    control = new Sotka2(controlData.Name, controlData.IPAddress); // Используем новый конструктор
                     break;
                 case "Sotka1":
-                    control = new Sotka1(controlData.Name);
+                    control = new Sotka1(controlData.Name, controlData.IPAddress);
                     break;
                 case "RemoteDevice":
                     control = new RemoteDevice(controlData.Name, new ObservableCollection<NodeParam>());
@@ -152,16 +152,30 @@ namespace InterfaceView.View
                     ParentName = control.Parent?.ViewControlName
                 };
 
+                // Проверка на тип контрола перед сохранением IP-адреса
+                if (control is Sotka2 || control is Sotka1)
+                {
+                    controlData.IPAddress = (control as dynamic).IPAddress.ToString();
+                }
+
                 foreach (var child in control.Elements)
                 {
-                    controlData.Children.Add(new ViewControlData
+                    var childData = new ViewControlData
                     {
                         Name = child.ViewControlName,
                         Left = Canvas.GetLeft(child as FrameworkElement),
                         Top = Canvas.GetTop(child as FrameworkElement),
                         IsActive = child.IsActive,
                         ParentName = child.Parent?.ViewControlName
-                    });
+                    };
+
+                    // Проверка на тип контрола перед сохранением IP-адреса
+                    if (child is Sotka2 || child is Sotka1)
+                    {
+                        childData.IPAddress = (child as dynamic).IPAddress.ToString();
+                    }
+
+                    controlData.Children.Add(childData);
                 }
 
                 canvasData.Controls.Add(controlData);

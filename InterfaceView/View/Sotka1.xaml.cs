@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using InterfaceView.Model;
 
 namespace InterfaceView.View
 {
@@ -45,10 +46,19 @@ namespace InterfaceView.View
             set => SetOptions(nameof(Parent), ref _parent, value);
         }
 
+        private IPAddress _ipAddress;
+        public IPAddress IPAddress
+        {
+            get => _ipAddress;
+            set => SetOptions(nameof(IPAddress), ref _ipAddress, value);
+        }
+
         public ObservableCollection<IViewControl> Elements { get; set; }
-        public Sotka1(string name)
+
+        public Sotka1(string name, string ipAddress)
         {
             ViewControlName = name;
+            IPAddress = new IPAddress(ipAddress);
             Elements = new();
             IsActive = false;
             InitializeComponent();

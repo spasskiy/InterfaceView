@@ -12,6 +12,7 @@ namespace InterfaceView.Model
         public double Top { get; set; }
         public bool IsActive { get; set; }
         public string ParentName { get; set; }
+        public string IPAddress { get; set; } // Добавлено свойство для IP-адреса
         public List<ViewControlData> Children { get; set; } = new List<ViewControlData>();
     }
 

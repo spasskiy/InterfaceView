@@ -6,20 +6,51 @@
 			<Left>50</Left>
 			<Top>50</Top>
 			<IsActive>true</IsActive>
+			<IPAddress>10.10.11.21</IPAddress> <!-- Добавлен элемент для IP-адреса -->
 			<Children>
 				<ViewControlData>
-					<Name>Sotka1</Name>
+					<Name>Sotka1A</Name> <!-- Переименован в Sotka1A -->
 					<Left>150</Left>
 					<Top>150</Top>
 					<IsActive>true</IsActive>
 					<ParentName>Sotka2</ParentName>
 					<Children>
 						<ViewControlData>
-							<Name>RemoteDevice</Name>
+							<Name>БКМ</Name> <!-- Добавлен наследник БКМ -->
 							<Left>250</Left>
 							<Top>250</Top>
 							<IsActive>true</IsActive>
-							<ParentName>Sotka1</ParentName>
+							<ParentName>Sotka1A</ParentName>
+						</ViewControlData>
+						<ViewControlData>
+							<Name>БСЗ</Name> <!-- Добавлен наследник БСЗ -->
+							<Left>300</Left>
+							<Top>300</Top>
+							<IsActive>true</IsActive>
+							<ParentName>Sotka1A</ParentName>
+						</ViewControlData>
+					</Children>
+				</ViewControlData>
+				<ViewControlData>
+					<Name>Sotka1B</Name> <!-- Добавлен новый элемент Sotka1B -->
+					<Left>350</Left>
+					<Top>350</Top>
+					<IsActive>true</IsActive>
+					<ParentName>Sotka2</ParentName>
+					<Children>
+						<ViewControlData>
+							<Name>ММПР</Name> <!-- Добавлен наследник ММПР -->
+							<Left>450</Left>
+							<Top>450</Top>
+							<IsActive>true</IsActive>
+							<ParentName>Sotka1B</ParentName>
+						</ViewControlData>
+						<ViewControlData>
+							<Name>БСЗ</Name> <!-- Добавлен наследник БСЗ -->
+							<Left>500</Left>
+							<Top>500</Top>
+							<IsActive>true</IsActive>
+							<ParentName>Sotka1B</ParentName>
 						</ViewControlData>
 					</Children>
 				</ViewControlData>
