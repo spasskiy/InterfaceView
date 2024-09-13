@@ -31,17 +31,10 @@ namespace InterfaceView.View
             LoadFromXml("canvasData.xml");
         }
 
-      
-
         private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             UpdateLines();
         }
-
-      
-
-
-       
 
         private void FrameworkElement_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -81,8 +74,6 @@ namespace InterfaceView.View
             var draggableControl = sender as FrameworkElement;
             draggableControl.ReleaseMouseCapture();
         }
-
-
 
         private void UpdateLines()
         {
@@ -148,8 +139,6 @@ namespace InterfaceView.View
                 UpdateLines();
             }
         }
-
-
 
         public void SaveToXml(string filePath)
         {
@@ -225,33 +214,33 @@ namespace InterfaceView.View
                 var canvasData = new CanvasData
                 {
                     Controls = new List<ViewControlData>
-            {
-                new ViewControlData
-                {
-                    Name = "Sotka2",
-                    Left = 50,
-                    Top = 50,
-                    IsActive = true,
-                    IPAddress = "10.10.11.21" // Добавлен IP-адрес
-                },
-                new ViewControlData
-                {
-                    Name = "Sotka1",
-                    Left = 150,
-                    Top = 150,
-                    IsActive = true,
-                    ParentName = "Sotka2",
-                    IPAddress = "10.10.12.11" // Добавлен IP-адрес
-                },
-                new ViewControlData
-                {
-                    Name = "RemoteDevice",
-                    Left = 250,
-                    Top = 250,
-                    IsActive = true,
-                    ParentName = "Sotka1"
-                }
-            }
+                    {
+                        new ViewControlData
+                        {
+                            Name = "Sotka2",
+                            Left = 50,
+                            Top = 50,
+                            IsActive = true,
+                            IPAddress = "10.10.11.21" // Добавлен IP-адрес
+                        },
+                        new ViewControlData
+                        {
+                            Name = "Sotka1",
+                            Left = 150,
+                            Top = 150,
+                            IsActive = true,
+                            ParentName = "Sotka2",
+                            IPAddress = "10.10.12.11" // Добавлен IP-адрес
+                        },
+                        new ViewControlData
+                        {
+                            Name = "RemoteDevice",
+                            Left = 250,
+                            Top = 250,
+                            IsActive = true,
+                            ParentName = "Sotka1"
+                        }
+                    }
                 };
 
                 SerializationHelper.SerializeToFile(canvasData, filePath);
@@ -331,6 +320,9 @@ namespace InterfaceView.View
                 canvas.Children.Add(control as UIElement);
                 _viewControls.Add(control);
 
+                // Подписываемся на событие PropertyChanged
+                control.PropertyChanged += OnViewControlPropertyChanged;
+
                 // Добавляем детей
                 if (controlData.Children != null)
                 {
@@ -344,6 +336,5 @@ namespace InterfaceView.View
 
             return control;
         }
-
     }
 }
