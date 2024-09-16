@@ -26,9 +26,24 @@
             <MenuItem Header="Сформировать отчёт" Command="{Binding GenerateReportCommand}" />
             <MenuItem Header="Просмотреть отчёты" Command="{Binding ViewReportsCommand}" />
         </MenuItem>
+        <MenuItem Header="Конфигурация">
+            <MenuItem Header="Настроить конфигурацию" Command="{Binding ConfigureCommand}" />
+            <MenuItem Header="Импорт конфигурации" Command="{Binding ImportConfigurationCommand}" />
+            <MenuItem Header="Экспорт конфигурации" Command="{Binding ExportConfigurationCommand}" />
+        </MenuItem>
+        <MenuItem Header="Сервис">
+            <MenuItem Header="Проверить соединение" Command="{Binding CheckConnectionCommand}" />
+            <MenuItem Header="Очистить кэш" Command="{Binding ClearCacheCommand}" />
+            <MenuItem Header="Перезапустить сервис" Command="{Binding RestartServiceCommand}" />
+        </MenuItem>
+        <MenuItem Header="Расчёты">
+            <MenuItem Header="Выполнить расчёт" Command="{Binding PerformCalculationCommand}" />
+            <MenuItem Header="Просмотреть результаты" Command="{Binding ViewResultsCommand}" />
+            <MenuItem Header="Очистить результаты" Command="{Binding ClearResultsCommand}" />
+        </MenuItem>
         <MenuItem Header="Помощь">
             <MenuItem Header="О программе" Command="{Binding AboutCommand}" />
-            <MenuItem Header="Иснтрукция" Command="{Binding UserManualCommand}" />
+            <MenuItem Header="Инструкция" Command="{Binding UserManualCommand}" />
         </MenuItem>
     </Menu>
 </UserControl>

@@ -22,6 +22,7 @@ namespace InterfaceView.View
     {
         private Point _startPoint;
         private bool _isDragging;
+        private bool _isLinesDirty = false; // Флаг, указывающий, что линии нужно обновить
 
         private List<Line> _lines = new List<Line>();
         private List<IViewControl> _viewControls = new List<IViewControl>();
@@ -34,7 +35,8 @@ namespace InterfaceView.View
 
         private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            UpdateLines();
+            _isLinesDirty = true;
+            UpdateLinesIfNeeded();
         }
 
         private void FrameworkElement_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -65,7 +67,8 @@ namespace InterfaceView.View
                 Canvas.SetLeft(draggableControl, newLeft);
                 Canvas.SetTop(draggableControl, newTop);
 
-                UpdateLines();
+                _isLinesDirty = true;
+                UpdateLinesIfNeeded();
             }
         }
 
@@ -76,8 +79,18 @@ namespace InterfaceView.View
             draggableControl.ReleaseMouseCapture();
         }
 
+        private void UpdateLinesIfNeeded()
+        {
+            if (_isLinesDirty)
+            {
+                UpdateLines();
+                _isLinesDirty = false;
+            }
+        }
+
         private void UpdateLines()
         {
+            //MethodCallLogger.LogMethodCall(nameof(UpdateLines));
             // Очищаем предыдущие линии
             foreach (var line in _lines)
             {
@@ -90,6 +103,7 @@ namespace InterfaceView.View
 
         private void DrawLines(Canvas canvas, IEnumerable<IViewControl> controls)
         {
+            //MethodCallLogger.LogMethodCall(nameof(DrawLines));
             if (controls == null || controls.Count() == 0) return;
             foreach (var control in controls)
             {
@@ -100,6 +114,12 @@ namespace InterfaceView.View
 
                     if (parentControl != null && childControl != null)
                     {
+                        // Проверка на видимость контролов
+                        if (parentControl.Visibility != Visibility.Visible || childControl.Visibility != Visibility.Visible)
+                        {
+                            continue; // Пропускаем этот элемент, если хотя бы один из контролов скрыт
+                        }
+
                         double parentLeft = Canvas.GetLeft(parentControl);
                         double parentTop = Canvas.GetTop(parentControl);
                         double childLeft = Canvas.GetLeft(childControl);
@@ -127,17 +147,16 @@ namespace InterfaceView.View
                         _lines.Add(line);
                     }
                 }
-
-                // Рекурсивно обрабатываем дочерние элементы
-                DrawLines(canvas, control.Elements);
             }
         }
 
         private void OnViewControlPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            //MethodCallLogger.LogMethodCall(nameof(OnViewControlPropertyChanged));
             if (e.PropertyName == nameof(IViewControl.IsActive))
             {
-                UpdateLines();
+                _isLinesDirty = true;
+                UpdateLinesIfNeeded();
             }
         }
 
@@ -224,11 +243,11 @@ namespace InterfaceView.View
                     Left = 50,
                     Top = 50,
                     IsActive = true,
-                    IPAddress = "10.10.11.21" 
+                    IPAddress = "10.10.11.21"
                 },
                 new ViewControlData
                 {
-                    ViewControlType = "Sotka1", 
+                    ViewControlType = "Sotka1",
                     ViewControlName = "Sotka1",
                     Left = 150,
                     Top = 150,
@@ -238,7 +257,7 @@ namespace InterfaceView.View
                 },
                 new ViewControlData
                 {
-                    ViewControlType = "RemoteDevice", 
+                    ViewControlType = "RemoteDevice",
                     ViewControlName = "RemoteDevice",
                     Left = 250,
                     Top = 250,
@@ -279,12 +298,14 @@ namespace InterfaceView.View
                     }
                 }
 
-                UpdateLines();
+                _isLinesDirty = true;
+                UpdateLinesIfNeeded();
             }
         }
 
         private IViewControl CreateControl(ViewControlData controlData, Canvas canvas, IViewControl parent = null)
         {
+            //MethodCallLogger.LogMethodCall(nameof(CreateControl));
             IViewControl control = null;
             switch (controlData.ViewControlType) // Изменено на ViewControlType
             {
@@ -320,6 +341,7 @@ namespace InterfaceView.View
                     frameworkElement.PreviewMouseDown += FrameworkElement_PreviewMouseDown;
                     frameworkElement.PreviewMouseMove += FrameworkElement_PreviewMouseMove;
                     frameworkElement.PreviewMouseUp += FrameworkElement_PreviewMouseUp;
+                    frameworkElement.MouseRightButtonDown += FrameworkElement_MouseRightButtonDown; // Добавляем обработчик клика правой кнопкой мыши
                 }
 
                 canvas.Children.Add(control as UIElement);
@@ -340,6 +362,83 @@ namespace InterfaceView.View
             }
 
             return control;
+        }
+
+        private void FrameworkElement_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var control = sender as IViewControl;
+            if (control != null)
+            {
+                ToggleChildrenVisibility(control);
+                _isLinesDirty = true;
+                UpdateLinesIfNeeded(); // Вызываем UpdateLines после завершения всех рекурсивных вызовов
+            }
+        }
+
+        // Нужен для скрытия/показа дочерних элементов при нажатии правой кнопки мыши
+        private Dictionary<IViewControl, Visibility> _visibilityStates = new Dictionary<IViewControl, Visibility>();
+
+        private void ToggleChildrenVisibility(IViewControl control)
+        {
+            //MethodCallLogger.LogMethodCall(nameof(ToggleChildrenVisibility));
+            var controlElement = control as FrameworkElement;
+            if (controlElement != null)
+            {
+                // Если родительский элемент скрыт, скрываем всех детей
+                if (controlElement.Visibility == Visibility.Collapsed)
+                {
+                    foreach (var child in control.Elements)
+                    {
+                        var childElement = child as FrameworkElement;
+                        if (childElement != null)
+                        {
+                            // Сохраняем текущую видимость перед скрытием
+                            if (!_visibilityStates.ContainsKey(child))
+                            {
+                                _visibilityStates[child] = childElement.Visibility;
+                            }
+                            childElement.Visibility = Visibility.Collapsed;
+                        }
+                        ToggleChildrenVisibility(child);
+                    }
+                }
+                else
+                {
+                    // Иначе переключаем видимость детей
+                    foreach (var child in control.Elements)
+                    {
+                        var childElement = child as FrameworkElement;
+                        if (childElement != null)
+                        {
+                            // Восстанавливаем видимость, если она была сохранена
+                            if (_visibilityStates.ContainsKey(child))
+                            {
+                                childElement.Visibility = _visibilityStates[child];
+                                _visibilityStates.Remove(child);
+                            }
+                            else
+                            {
+                                childElement.Visibility = childElement.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                            }
+                        }
+                        ToggleChildrenVisibility(child);
+                    }
+                }
+            }
+        }
+
+        private void canvas_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                // Колёсико мыши прокручено вперёд (от пользователя)
+                MessageBox.Show("Колёсико мыши прокручено вперёд");
+            }
+            else
+            {
+                // Колёсико мыши прокручено назад (к пользователю)
+                MessageBox.Show("Колёсико мыши прокручено назад");
+            }
         }
     }
 }

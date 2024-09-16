@@ -25,6 +25,8 @@ namespace InterfaceView
         {
             InitializeComponent();
             DataContext = this;
+            ItemTreeViewControl.Canvas = MainViewField.canvas;
+            ItemTreeViewControl.BuildTreeView();
         }
 
         public ICommand SaveCommand => new RelayCommand(SaveToXml);

@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Background="Red">
-                <view:ItemTreeViewControl x:Name="ItemTreeViewControl" Canvas="{Binding ElementName=MainViewField, Path=canvas}"/>
+                <view:ItemTreeViewControl x:Name="ItemTreeViewControl"/>
             </Grid>            
             <Grid Grid.Column="1" Background="Black">
                 <!--<Image Source="/View/background.png" />-->

@@ -6,5 +6,5 @@
              xmlns:local="clr-namespace:InterfaceView.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Canvas x:Name="canvas" Background="Transparent" SizeChanged="Canvas_SizeChanged"/>
+    <Canvas x:Name="canvas" Background="Transparent" SizeChanged="Canvas_SizeChanged" MouseWheel="canvas_MouseWheel"/>
 </UserControl>

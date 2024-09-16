@@ -1,60 +1,376 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<Controls>
-		<ViewControlData>
-			<Name>Sotka2</Name>
-			<Left>50</Left>
-			<Top>50</Top>
-			<IsActive>true</IsActive>
-			<IPAddress>10.10.11.21</IPAddress> <!-- Добавлен элемент для IP-адреса -->
-			<Children>
-				<ViewControlData>
-					<Name>Sotka1A</Name> <!-- Переименован в Sotka1A -->
-					<Left>150</Left>
-					<Top>150</Top>
-					<IsActive>true</IsActive>
-					<ParentName>Sotka2</ParentName>
-					<Children>
-						<ViewControlData>
-							<Name>БКМ</Name> <!-- Добавлен наследник БКМ -->
-							<Left>250</Left>
-							<Top>250</Top>
-							<IsActive>true</IsActive>
-							<ParentName>Sotka1A</ParentName>
-						</ViewControlData>
-						<ViewControlData>
-							<Name>БСЗ</Name> <!-- Добавлен наследник БСЗ -->
-							<Left>300</Left>
-							<Top>300</Top>
-							<IsActive>true</IsActive>
-							<ParentName>Sotka1A</ParentName>
-						</ViewControlData>
-					</Children>
-				</ViewControlData>
-				<ViewControlData>
-					<Name>Sotka1B</Name> <!-- Добавлен новый элемент Sotka1B -->
-					<Left>350</Left>
-					<Top>350</Top>
-					<IsActive>true</IsActive>
-					<ParentName>Sotka2</ParentName>
-					<Children>
-						<ViewControlData>
-							<Name>ММПР</Name> <!-- Добавлен наследник ММПР -->
-							<Left>450</Left>
-							<Top>450</Top>
-							<IsActive>true</IsActive>
-							<ParentName>Sotka1B</ParentName>
-						</ViewControlData>
-						<ViewControlData>
-							<Name>БСЗ</Name> <!-- Добавлен наследник БСЗ -->
-							<Left>500</Left>
-							<Top>500</Top>
-							<IsActive>true</IsActive>
-							<ParentName>Sotka1B</ParentName>
-						</ViewControlData>
-					</Children>
-				</ViewControlData>
-			</Children>
-		</ViewControlData>
-	</Controls>
+  <Controls>
+    <ViewControlData>
+      <ViewControlType>Sotka2</ViewControlType>
+      <ViewControlName>ЛПУ</ViewControlName>
+      <Left>715</Left>
+      <Top>121</Top>
+      <IsActive>true</IsActive>
+      <IPAddress>10.10.11.21</IPAddress>
+      <Children>
+        <ViewControlData>
+          <ViewControlType>Sotka1</ViewControlType>
+          <ViewControlName>ЛЭС 1</ViewControlName>
+          <Left>97</Left>
+          <Top>474.99999999999955</Top>
+          <IsActive>true</IsActive>
+          <ParentName>ЛПУ</ParentName>
+          <IPAddress>10.10.12.12</IPAddress>
+          <Children>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БКМ</ViewControlName>
+              <Left>221</Left>
+              <Top>675</Top>
+              <IsActive>false</IsActive>
+              <ParentName>ЛЭС 1</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>49.469767221107205</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>22.43668731349353</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>-30.56076727533449</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БСЗ</ViewControlName>
+              <Left>8</Left>
+              <Top>802.9999999999999</Top>
+              <IsActive>false</IsActive>
+              <ParentName>ЛЭС 1</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>49.099984545797916</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>61.467404868896935</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>-4.160494117904236</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>ММПР</ViewControlName>
+              <Left>3</Left>
+              <Top>675</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 1</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>50.99986221398227</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>34.69822242446128</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>34.04339743408757</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+          </Children>
+          <NodeParams />
+        </ViewControlData>
+        <ViewControlData>
+          <ViewControlType>Sotka1</ViewControlType>
+          <ViewControlName>ЛЭС 2</ViewControlName>
+          <Left>491</Left>
+          <Top>469.99999999999955</Top>
+          <IsActive>true</IsActive>
+          <ParentName>ЛПУ</ParentName>
+          <IPAddress>10.10.12.12</IPAddress>
+          <Children>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БКМ</ViewControlName>
+              <Left>621</Left>
+              <Top>680</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 2</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>63.283074142358316</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>39.289541354956654</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>20.597163192840355</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БКМ</ViewControlName>
+              <Left>519</Left>
+              <Top>792</Top>
+              <IsActive>false</IsActive>
+              <ParentName>ЛЭС 2</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>27.770097759925214</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>-19.256502627686082</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>28.765499480331695</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БСЗ</ViewControlName>
+              <Left>306</Left>
+              <Top>792</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 2</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>34.68574465573947</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>40.1636295853166</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>56.857143831373406</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+          </Children>
+          <NodeParams />
+        </ViewControlData>
+        <ViewControlData>
+          <ViewControlType>Sotka1</ViewControlType>
+          <ViewControlName>ЛЭС 3</ViewControlName>
+          <Left>927</Left>
+          <Top>464.99999999999943</Top>
+          <IsActive>true</IsActive>
+          <ParentName>ЛПУ</ParentName>
+          <IPAddress>10.10.12.12</IPAddress>
+          <Children>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>ММПР</ViewControlName>
+              <Left>814</Left>
+              <Top>801</Top>
+              <IsActive>false</IsActive>
+              <ParentName>ЛЭС 3</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>31.989853524386604</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>64.52567258192981</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>-5.8790839274069135</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>ММПР</ViewControlName>
+              <Left>1045</Left>
+              <Top>800</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 3</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>59.59320898496037</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>67.937264944175</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>8.028721133230304</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БКМ</ViewControlName>
+              <Left>881</Left>
+              <Top>684</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 3</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>54.279071032886165</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>87.62703067019143</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>24.942558435946797</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+          </Children>
+          <NodeParams />
+        </ViewControlData>
+        <ViewControlData>
+          <ViewControlType>Sotka1</ViewControlType>
+          <ViewControlName>ЛЭС 4</ViewControlName>
+          <Left>1359</Left>
+          <Top>475.9999999999993</Top>
+          <IsActive>true</IsActive>
+          <ParentName>ЛПУ</ParentName>
+          <IPAddress>10.10.12.12</IPAddress>
+          <Children>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БСЗ</ViewControlName>
+              <Left>1211</Left>
+              <Top>674.9999999999999</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 4</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>70.59251847430843</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>69.3662366588341</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>14.968733821117866</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БКМ</ViewControlName>
+              <Left>1425</Left>
+              <Top>799</Top>
+              <IsActive>false</IsActive>
+              <ParentName>ЛЭС 4</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>38.93300005862647</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>10.131402215861728</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>-4.4844450368686</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+            <ViewControlData>
+              <ViewControlType>RemoteDevice</ViewControlType>
+              <ViewControlName>БКМ</ViewControlName>
+              <Left>1428</Left>
+              <Top>680</Top>
+              <IsActive>true</IsActive>
+              <ParentName>ЛЭС 4</ParentName>
+              <Children />
+              <NodeParams>
+                <NodeParamData>
+                  <ParamName>Напряжение</ParamName>
+                  <ParamValue>58.01729379154378</ParamValue>
+                  <MeasureUnit>V</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Сопротивление</ParamName>
+                  <ParamValue>47.07678652636635</ParamValue>
+                  <MeasureUnit>Ω</MeasureUnit>
+                </NodeParamData>
+                <NodeParamData>
+                  <ParamName>Температура</ParamName>
+                  <ParamValue>36.42289552472208</ParamValue>
+                  <MeasureUnit>°C</MeasureUnit>
+                </NodeParamData>
+              </NodeParams>
+            </ViewControlData>
+          </Children>
+          <NodeParams />
+        </ViewControlData>
+      </Children>
+      <NodeParams />
+    </ViewControlData>
+  </Controls>
 </CanvasData>
