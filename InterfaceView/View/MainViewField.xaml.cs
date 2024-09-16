@@ -22,6 +22,7 @@ namespace InterfaceView.View
     {
         private Point _startPoint;
         private bool _isDragging;
+
         private List<Line> _lines = new List<Line>();
         private List<IViewControl> _viewControls = new List<IViewControl>();
 
