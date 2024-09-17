@@ -3,12 +3,14 @@ using InterfaceView.View;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Threading;
 
 namespace InterfaceView.ViewModel
 {
     public class InfoTableViewModel : INotifyPropertyChanged
     {
         private List<IViewControl> _viewControls;
+        private DispatcherTimer _updateTimer;
 
         private int _totalNodes;
         public int TotalNodes
@@ -79,6 +81,20 @@ namespace InterfaceView.ViewModel
         public InfoTableViewModel(List<IViewControl> viewControls)
         {
             _viewControls = viewControls;
+            InitializeTimer();
+            UpdateStatistics();
+        }
+
+        private void InitializeTimer()
+        {
+            _updateTimer = new DispatcherTimer();
+            _updateTimer.Interval = TimeSpan.FromSeconds(1); // Обновление каждую секунду
+            _updateTimer.Tick += OnTimerTick;
+            _updateTimer.Start();
+        }
+
+        private void OnTimerTick(object sender, EventArgs e)
+        {
             UpdateStatistics();
         }
 
@@ -88,12 +104,13 @@ namespace InterfaceView.ViewModel
             Sotka1Count = _viewControls.Count(vc => vc is Sotka1);
             RemoteDeviceCount = _viewControls.Count(vc => vc is RemoteDevice);
 
-            var remoteDevices = _viewControls.OfType<RemoteDevice>();
+            var remoteDeviceView = _viewControls.Where(vc => vc is RemoteDevice).Select(x => x as RemoteDevice).ToList();
+            var remoteDevices = remoteDeviceView.Select(x => x.DataContext as RemoteDeviceViewModel);
             if (remoteDevices.Any())
             {
-                //AverageTemperature = remoteDevices.Average(rd => rd.Temperature);
-                //AverageVoltage = remoteDevices.Average(rd => rd.Voltage);
-                //AverageResistance = remoteDevices.Average(rd => rd.Resistance);
+                AverageTemperature = remoteDevices.Average(rd => rd.NodeParams[0].ParamValue);
+                AverageVoltage = remoteDevices.Average(rd => rd.NodeParams[1].ParamValue);
+                AverageResistance = remoteDevices.Average(rd => rd.NodeParams[2].ParamValue);
             }
             else
             {

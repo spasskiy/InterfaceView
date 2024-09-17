@@ -4,42 +4,62 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InterfaceView.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="300">
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="BaseTextBlockStyle">
+            <Setter Property="Foreground" Value="{DynamicResource InfoTableCollor}"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ValueTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </UserControl.Resources>
+
     <Border BorderBrush="{DynamicResource InfoTableCollor}" BorderThickness="3" Padding="2">
         <Border BorderBrush="{DynamicResource InfoTableCollor}" BorderThickness="2" Padding="5">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="{DynamicResource InfoTableCollor}"/>
-                    <Setter Property="Margin" Value="5"/>
-                </Style>
-            </Grid.Resources>
-            <TextBlock Text="Всего узлов:" Grid.Row="0" Grid.Column="0"/>
-            <TextBlock Text="{Binding TotalNodes}" Grid.Row="0" Grid.Column="1"/>
-            <TextBlock Text="ЛЭС :" Grid.Row="1" Grid.Column="0"/>
-            <TextBlock Text="{Binding Sotka1Count}" Grid.Row="1" Grid.Column="1"/>
-            <TextBlock Text="ПЛК :" Grid.Row="2" Grid.Column="0"/>
-            <TextBlock Text="{Binding RemoteDeviceCount}" Grid.Row="2" Grid.Column="1"/>
-            <TextBlock Text="Средняя температура:" Grid.Row="3" Grid.Column="0"/>
-            <TextBlock Text="{Binding AverageTemperature}" Grid.Row="3" Grid.Column="1"/>
-            <TextBlock Text="Среднее напряжение:" Grid.Row="4" Grid.Column="0"/>
-            <TextBlock Text="{Binding AverageVoltage}" Grid.Row="4" Grid.Column="1"/>
-            <TextBlock Text="Среднее сопротивление:" Grid.Row="5" Grid.Column="0"/>
-            <TextBlock Text="{Binding AverageResistance}" Grid.Row="5" Grid.Column="1"/>
-        </Grid>
-    </Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Header Row -->
+                <TextBlock Text="Статистика:" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource HeaderTextBlockStyle}"/>
+
+                <!-- Separator Line -->
+                <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="{DynamicResource InfoTableCollor}" BorderThickness="0 3 0 0"/>
+
+                <!-- Data Rows -->
+                <TextBlock Text="Всего узлов:" Grid.Row="2" Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{Binding TotalNodes}" Grid.Row="2" Grid.Column="1" Style="{StaticResource ValueTextBlockStyle}"/>
+                <TextBlock Text="ЛЭС :" Grid.Row="3" Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{Binding Sotka1Count}" Grid.Row="3" Grid.Column="1" Style="{StaticResource ValueTextBlockStyle}"/>
+                <TextBlock Text="ПЛК :" Grid.Row="4" Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{Binding RemoteDeviceCount}" Grid.Row="4" Grid.Column="1" Style="{StaticResource ValueTextBlockStyle}"/>
+                <TextBlock Text="Средняя температура:" Grid.Row="5" Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{Binding AverageTemperature, StringFormat={}{0:N2}}" Grid.Row="5" Grid.Column="1" Style="{StaticResource ValueTextBlockStyle}"/>
+                <TextBlock Text="Среднее напряжение:" Grid.Row="6" Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{Binding AverageVoltage, StringFormat={}{0:N2}}" Grid.Row="6" Grid.Column="1" Style="{StaticResource ValueTextBlockStyle}"/>
+                <TextBlock Text="Среднее сопротивление:" Grid.Row="7" Grid.Column="0" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="{Binding AverageResistance, StringFormat={}{0:N2}}" Grid.Row="7" Grid.Column="1" Style="{StaticResource ValueTextBlockStyle}"/>
+            </Grid>
+        </Border>
     </Border>
 </UserControl>

@@ -43,21 +43,42 @@ namespace InterfaceView.ViewModel
         public double Temperature
         {
             get => _temperature;
-            set => SetOptions(nameof(Temperature), ref _temperature, value);
+            set
+            {
+                if (_temperature != value)
+                {
+                    _temperature = value;
+                    OnPropertyChanged(nameof(Temperature));                    
+                }
+            }
         }
 
         private double _voltage;
         public double Voltage
         {
             get => _voltage;
-            set => SetOptions(nameof(Voltage), ref _voltage, value);
+            set
+            {
+                if (_voltage != value)
+                {
+                    _voltage = value;
+                    OnPropertyChanged(nameof(Voltage));                    
+                }
+            }
         }
 
         private double _resistance;
         public double Resistance
         {
             get => _resistance;
-            set => SetOptions(nameof(Resistance), ref _resistance, value);
+            set
+            {
+                if (_resistance != value)
+                {
+                    _resistance = value;
+                    OnPropertyChanged(nameof(Resistance));                    
+                }
+            }
         }
 
         public RemoteDeviceViewModel(string name, ObservableCollection<NodeParam> parameters)
@@ -89,12 +110,10 @@ namespace InterfaceView.ViewModel
             IsActive = NodeParams.All(param => param.ParamValue >= 0);
         }
 
-        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, e);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected void SetOptions<T>(string property, ref T variable, T value)
@@ -102,9 +121,8 @@ namespace InterfaceView.ViewModel
             if (!EqualityComparer<T>.Default.Equals(variable, value))
             {
                 variable = value;
-                OnPropertyChanged(new PropertyChangedEventArgs(property));
+                OnPropertyChanged(property);
             }
         }
-        #endregion
     }
 }

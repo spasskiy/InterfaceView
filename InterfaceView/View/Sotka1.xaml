@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:InterfaceView.View"
              mc:Ignorable="d">
     <Border BorderThickness="2" BorderBrush="Black">
-        <Grid Height="115" Width="120" Background="LightGray">
+        <Grid Height="115" Width="140" Background="LightGray">
             <StackPanel Margin=" 0 5 0 0">
                 <Grid>
                     <Grid.ColumnDefinitions>

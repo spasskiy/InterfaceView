@@ -38,10 +38,10 @@ namespace InterfaceView.View
             double topMargin = 10;
 
             // Рассчитываем позицию для прижатия к правому верхнему углу
-            double leftPosition = canvas.ActualWidth - infoTable.ActualWidth - rightMargin;
+            double leftPosition = canvas.ActualWidth - infoTable.ActualWidth + rightMargin;
             double topPosition = topMargin;
 
-            Canvas.SetLeft(infoTable, leftPosition);
+            Canvas.SetRight(infoTable, leftPosition);
             Canvas.SetTop(infoTable, topPosition);
             canvas.Children.Add(infoTable);
         }
@@ -443,7 +443,7 @@ namespace InterfaceView.View
 
         private void canvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            double scaleFactor = 0.1;
+            double scaleFactor = 0.05;
 
             if (e.Delta > 0)
             {
@@ -453,9 +453,12 @@ namespace InterfaceView.View
             }
             else
             {
-                // Уменьшаем масштаб
-                canvasScaleTransform.ScaleX -= scaleFactor;
-                canvasScaleTransform.ScaleY -= scaleFactor;
+                // Уменьшаем масштаб, но не меньше чем 0.2 (уменьшение в 5 раз)
+                if (canvasScaleTransform.ScaleX > 0.2 && canvasScaleTransform.ScaleY > 0.2)
+                {
+                    canvasScaleTransform.ScaleX -= scaleFactor;
+                    canvasScaleTransform.ScaleY -= scaleFactor;
+                }
             }
         }
 

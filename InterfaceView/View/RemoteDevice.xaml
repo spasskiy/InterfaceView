@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InterfaceView.View"
+             
              mc:Ignorable="d">
     <UserControl.Resources>
-        <Style x:Key="NodeParamRowStyle" TargetType="Grid">            
+        <Style x:Key="NodeParamRowStyle" TargetType="Grid">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsFine}" Value="False">
                     <Setter Property="Background" Value="Red"/>
@@ -25,7 +26,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding ParamName}" Grid.Column="0" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding ParamName}" Grid.Column="0" HorizontalAlignment="Left" Padding="3 0"/>
                 <TextBlock Text="{Binding ParamValue, StringFormat={}{0:N2}}" Grid.Column="1" HorizontalAlignment="Left"/>
                 <TextBlock Text="{Binding MeasureUnit}" Grid.Column="2" HorizontalAlignment="Center"/>
             </Grid>
@@ -76,7 +77,6 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Параметры" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 2"/>
                         <Grid Grid.Row="1" x:Name="ParamsGrid" Margin="5 3">
@@ -90,5 +90,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-    </Grid>  
+    </Grid>
 </UserControl>
