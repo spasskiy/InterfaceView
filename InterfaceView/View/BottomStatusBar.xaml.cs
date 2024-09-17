@@ -26,7 +26,7 @@ namespace InterfaceView.View
             }
         }
 
-        private int _availableNodesCount = 10;
+        private int _availableNodesCount = 17;
         public int AvailableNodesCount
         {
             get => _availableNodesCount;

@@ -14,7 +14,7 @@
             <Setter Property="IsExpanded" Value="True"/>
         </Style>
     </UserControl.Resources>
-    <TreeView x:Name="ControlTreeView" Background="{DynamicResource BackgroundBrush}">
+    <TreeView x:Name="ControlTreeView" Background="{DynamicResource ViewCotrolBackground}">
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate DataType="{x:Type interfaces:IViewControl}" ItemsSource="{Binding Elements}">
                 <TextBlock>

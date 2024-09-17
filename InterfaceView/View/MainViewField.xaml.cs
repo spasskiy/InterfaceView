@@ -1,11 +1,9 @@
 ﻿using InterfaceView.Model;
 using InterfaceView.View.Interfaces;
-using System;
-using System.Collections.Generic;
+using InterfaceView.ViewModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,10 +12,6 @@ using System.Windows.Shapes;
 
 namespace InterfaceView.View
 {
-    /// <summary>
-    /// Логика взаимодействия для MainViewField.xaml
-    /// Основной контрол отображения. Пока вся логика работы в нём.
-    /// </summary>
     public partial class MainViewField : UserControl
     {
         private Point _startPoint;
@@ -26,11 +20,30 @@ namespace InterfaceView.View
 
         private List<Line> _lines = new List<Line>();
         private List<IViewControl> _viewControls = new List<IViewControl>();
+        private InfoTableViewModel _infoTableViewModel;
 
         public MainViewField()
         {
             InitializeComponent();
             LoadFromXml("canvasData.xml");
+            AddInfoTable();
+        }
+
+        private void AddInfoTable()
+        {
+            _infoTableViewModel = new InfoTableViewModel(_viewControls);
+            var infoTable = new InfoTableControl();
+            infoTable.DataContext = _infoTableViewModel;
+            double rightMargin = 10;
+            double topMargin = 10;
+
+            // Рассчитываем позицию для прижатия к правому верхнему углу
+            double leftPosition = canvas.ActualWidth - infoTable.ActualWidth - rightMargin;
+            double topPosition = topMargin;
+
+            Canvas.SetLeft(infoTable, leftPosition);
+            Canvas.SetTop(infoTable, topPosition);
+            canvas.Children.Add(infoTable);
         }
 
         private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -301,6 +314,7 @@ namespace InterfaceView.View
                 _isLinesDirty = true;
                 UpdateLinesIfNeeded();
             }
+            _infoTableViewModel?.UpdateStatistics();
         }
 
         private IViewControl CreateControl(ViewControlData controlData, Canvas canvas, IViewControl parent = null)
@@ -429,15 +443,34 @@ namespace InterfaceView.View
 
         private void canvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
+            double scaleFactor = 0.1;
+
             if (e.Delta > 0)
             {
-                // Колёсико мыши прокручено вперёд (от пользователя)
-                MessageBox.Show("Колёсико мыши прокручено вперёд");
+                // Увеличиваем масштаб
+                canvasScaleTransform.ScaleX += scaleFactor;
+                canvasScaleTransform.ScaleY += scaleFactor;
             }
             else
             {
-                // Колёсико мыши прокручено назад (к пользователю)
-                MessageBox.Show("Колёсико мыши прокручено назад");
+                // Уменьшаем масштаб
+                canvasScaleTransform.ScaleX -= scaleFactor;
+                canvasScaleTransform.ScaleY -= scaleFactor;
+            }
+        }
+
+        private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var element = e.OriginalSource as FrameworkElement;
+            if (element == canvas)
+            {
+                // Если кликнули по пустому месту на Canvas, выводим сообщение "Canvas"
+               // MessageBox.Show("Canvas");
+            }
+            else if (element != null)
+            {
+                // Если кликнули по дочернему элементу, вызываем обработчик этого элемента
+                element.RaiseEvent(e);
             }
         }
     }
