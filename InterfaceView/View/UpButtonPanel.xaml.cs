@@ -34,5 +34,9 @@ namespace InterfaceView.View
         {
             InitializeComponent();
         }
+        private void OpenSotk2Promo(object sender, RoutedEventArgs e)
+        {
+            new Sotka2Promo().ShowDialog();
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace InterfaceView.View
         public int CountOfNodes
         {
             get => _countOfNodes;
-            private set => SetOptions(nameof(CountOfNodes), ref _countOfNodes, value);
+            set => SetOptions(nameof(CountOfNodes), ref _countOfNodes, value);
         }
 
         private int _activeNodes;
@@ -124,5 +124,35 @@ namespace InterfaceView.View
             }
         }
         #endregion
+
+        public Sotka1 Clone()
+        {
+            // Создаем новый экземпляр Sotka1
+            var clone = new Sotka1(this.ViewControlName, this.IPAddress.ToString())
+            {
+                ViewControlType = this.ViewControlType,
+                IsActive = this.IsActive,
+                Parent = this.Parent, // Если Parent должен быть скопирован
+                CountOfNodes = this.CountOfNodes,
+                ActiveNodes = this.ActiveNodes
+            };
+
+            // Копируем элементы коллекции Elements
+            foreach (var element in this.Elements)
+            {
+                // Если элементы также поддерживают клонирование
+                if (element is ICloneable cloneableElement)
+                {
+                    clone.AddChildren((IViewControl)cloneableElement.Clone());
+                }
+                else
+                {
+                    // Если клонирование не поддерживается, добавляем тот же элемент
+                    clone.AddChildren(element);
+                }
+            }
+
+            return clone;
+        }
     }
 }

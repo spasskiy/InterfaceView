@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModbusDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>183bd64e-d630-42b6-af7e-545368fc1ce6</Id>
+  <IsActive>true</IsActive>
+  <ModbusAddress>43</ModbusAddress>
+  <Cells>
+    <CellData>
+      <Category>None</Category>
+      <Address>0</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год инициализации ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>1</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц инициализации ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>2</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День инициализации ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>3</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 1 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>4</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 1 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>5</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 1 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>6</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 2 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>7</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 2 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>8</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 2</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>9</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 3 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>10</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 3</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>11</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 3</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>12</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 4 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>13</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 4 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>14</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 4 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>15</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 5</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>16</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 5 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>17</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 5</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>18</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 6 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>19</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 6 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>20</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 6 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>21</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 7 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>22</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 7 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>23</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 7 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>24</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 8 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>25</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 8 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>26</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 8</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>27</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год обнаружения состояния сквозной коррозии ЭИ 9</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>28</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц обнаружения состояния сквозной коррозии ЭИ 9 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>29</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День обнаружения состояния сквозной коррозии ЭИ 9 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>30</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт идентификационного номера ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>31</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Средний байт идентификационного номера ИКП </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>32</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт идентификационного номера ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>33</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Количество элементов индикации, включая нулевой </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>34</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт толщины элемента индикации, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>35</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт толщины элемента индикации, мкм </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>36</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год выпуска ИКП - 2000 </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>37</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц выпуска ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>38</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День выпуска ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>39</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт толщины первого ЭИ монолитного ИКП, мкм </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>40</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт толщины первого ЭИ монолитного ИКП, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>41</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт шага изменения толщины ЭИ монолитного ИКП, мкм </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>42</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт шага изменения толщины ЭИ монолитного ИКП, мкм </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>43</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Резерв</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>44</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Резерв</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>45</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Резерв</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>46</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Резерв</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>47</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Количество скорродировавших ЭИ</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>48</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Признак неисправности ИКП</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>49</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт скорости коррозии, мкм/год</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>50</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт скорости коррозии, мкм/год </Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>51</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт глубины коррозии, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>52</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт глубины коррозии, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>53</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт скорости коррозии, виртуальный метод, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>54</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт скорости коррозии, виртуальный метод, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>55</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт глубины коррозии, виртуальный метод, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>56</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт глубины коррозии, виртуальный метод, мкм</Name>
+      <Format>Ushort</Format>
+      <Type>InputRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>0</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Сетевой адрес УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>1</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт скорости обмена УСИКПСТ, бод </Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>2</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт скорости обмена УСИКПСТ, бод </Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>3</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старший байт идентификационного номера УСИКПСТ </Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>4</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Третий байт идентификационного номера УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>5</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Второй байт идентификационного номера УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>6</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младший байт идентификационного номера УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>7</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Год выпуска УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>8</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Месяц выпуска УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>9</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>День выпуска УСИКПСТ </Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>10</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Старшее число версии ПО УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>11</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Среднее число версии ПО УСИКПСТ</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>12</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Младшее число версии ПО УСИКПСТ </Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>13</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Режим обмена данными 0 — ASCII, 1 - RTU</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>14</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Резерв </Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>15</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Текущий год</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>16</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Текущий месяц</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+    <CellData>
+      <Category>None</Category>
+      <Address>17</Address>
+      <NumberReg />
+      <NameDevice>УСИК</NameDevice>
+      <Name>Текущий день</Name>
+      <Format>Ushort</Format>
+      <Type>HoldingRegister</Type>
+      <Uelement xsi:type="ManualInputControl">
+        <Value>0</Value>
+      </Uelement>
+    </CellData>
+  </Cells>
+  <Categories>
+    <Category>
+      <Id>183bd64e-d630-42b6-af7e-545368fc1ce6</Id>
+      <Name>None</Name>
+      <Description>Нет категории</Description>
+      <TextColor>
+        <A>255</A>
+        <R>0</R>
+        <G>0</G>
+        <B>0</B>
+        <ScA>1</ScA>
+        <ScR>0</ScR>
+        <ScG>0</ScG>
+        <ScB>0</ScB>
+      </TextColor>
+      <BackGroundColor>
+        <A>255</A>
+        <R>255</R>
+        <G>255</G>
+        <B>255</B>
+        <ScA>1</ScA>
+        <ScR>1</ScR>
+        <ScG>1</ScG>
+        <ScB>1</ScB>
+      </BackGroundColor>
+    </Category>
+  </Categories>
+  <SelectedCategory>
+    <Id>183bd64e-d630-42b6-af7e-545368fc1ce6</Id>
+    <Name>Выбрать все</Name>
+    <Description />
+    <TextColor>
+      <A>255</A>
+      <R>0</R>
+      <G>0</G>
+      <B>0</B>
+      <ScA>1</ScA>
+      <ScR>0</ScR>
+      <ScG>0</ScG>
+      <ScB>0</ScB>
+    </TextColor>
+    <BackGroundColor>
+      <A>255</A>
+      <R>255</R>
+      <G>255</G>
+      <B>255</B>
+      <ScA>1</ScA>
+      <ScR>1</ScR>
+      <ScG>1</ScG>
+      <ScB>1</ScB>
+    </BackGroundColor>
+  </SelectedCategory>
+  <ConnectionType>None</ConnectionType>
+  <NameDevice>УСИК</NameDevice>
+  <PortSettings>
+    <PortName>COM12</PortName>
+    <BaudRate>9600</BaudRate>
+    <DataBits>8</DataBits>
+    <StopBits>One</StopBits>
+    <Parity>None</Parity>
+    <WriteTimeout>1000</WriteTimeout>
+    <ReadTimeout>1000</ReadTimeout>
+  </PortSettings>
+</ModbusDevice>

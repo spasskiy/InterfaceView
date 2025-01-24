@@ -9,7 +9,13 @@
     <Canvas x:Name="canvas" Background="Transparent" SizeChanged="Canvas_SizeChanged" MouseWheel="canvas_MouseWheel"
             MouseLeftButtonDown="canvas_MouseLeftButtonDown">
         <Canvas.RenderTransform>
-            <ScaleTransform x:Name="canvasScaleTransform" ScaleX="1" ScaleY="1"/>
+            <TransformGroup>
+                <ScaleTransform x:Name="canvasScaleTransform" ScaleX="1" ScaleY="1"/>
+                <TranslateTransform x:Name="canvasTranslateTransform"/>
+            </TransformGroup>
         </Canvas.RenderTransform>
+        <Canvas.Clip>
+            <RectangleGeometry Rect="0,0,0,0"/>
+        </Canvas.Clip>
     </Canvas>
 </UserControl>

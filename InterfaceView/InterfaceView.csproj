@@ -36,6 +36,9 @@
 
   <ItemGroup>
     <Content Include="AssemblyInfo.cs" />
+    <Content Include="Content\Demo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Logo.ico" />
     <Content Include="View\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

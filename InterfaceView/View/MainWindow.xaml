@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Системе оперативной телеметрии и комплексного анализа второго уровня"
+        <TextBlock Text="Система оперативной телеметрии и комплексного анализа второго уровня"
                  FontFamily="{StaticResource Bajazzo-Bd}"
 
                  HorizontalAlignment="Left" 
@@ -28,7 +28,7 @@
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="300*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>

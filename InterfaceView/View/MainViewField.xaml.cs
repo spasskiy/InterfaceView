@@ -17,6 +17,7 @@ namespace InterfaceView.View
         private Point _startPoint;
         private bool _isDragging;
         private bool _isLinesDirty = false; // Флаг, указывающий, что линии нужно обновить
+        private DateTime _lastClickTime; // Время последнего клика для отслеживания даблклика
 
         private List<Line> _lines = new List<Line>();
         private List<IViewControl> _viewControls = new List<IViewControl>();
@@ -50,8 +51,18 @@ namespace InterfaceView.View
         {
             _isLinesDirty = true;
             UpdateLinesIfNeeded();
+            UpdateCanvasClip();
         }
 
+        private void UpdateCanvasClip()
+        {
+            if (canvas != null)
+            {
+                var clipRect = new Rect(0, 0, canvas.ActualWidth, canvas.ActualHeight);
+                var rectangleGeometry = new RectangleGeometry(clipRect);
+                canvas.Clip = rectangleGeometry;
+            }
+        }
         private void FrameworkElement_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             _isDragging = true;
@@ -443,22 +454,41 @@ namespace InterfaceView.View
 
         private void canvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            double scaleFactor = 0.05;
+            double scaleFactor = 0.1;
+            Point mousePosition = e.GetPosition(canvas);
+
+            double newScaleX = canvasScaleTransform.ScaleX;
+            double newScaleY = canvasScaleTransform.ScaleY;
 
             if (e.Delta > 0)
             {
                 // Увеличиваем масштаб
-                canvasScaleTransform.ScaleX += scaleFactor;
-                canvasScaleTransform.ScaleY += scaleFactor;
+                newScaleX += scaleFactor;
+                newScaleY += scaleFactor;
             }
             else
             {
                 // Уменьшаем масштаб, но не меньше чем 0.2 (уменьшение в 5 раз)
                 if (canvasScaleTransform.ScaleX > 0.2 && canvasScaleTransform.ScaleY > 0.2)
                 {
-                    canvasScaleTransform.ScaleX -= scaleFactor;
-                    canvasScaleTransform.ScaleY -= scaleFactor;
+                    newScaleX -= scaleFactor;
+                    newScaleY -= scaleFactor;
                 }
+            }
+
+            // Проверяем, не выходят ли элементы за пределы канваса
+            if (newScaleX > 0.2 && newScaleY > 0.2)
+            {
+                canvasScaleTransform.ScaleX = newScaleX;
+                canvasScaleTransform.ScaleY = newScaleY;
+
+                // Вычисляем смещение канваса относительно курсора мыши
+                double offsetX = (mousePosition.X * newScaleX) - mousePosition.X;
+                double offsetY = (mousePosition.Y * newScaleY) - mousePosition.Y;
+
+                // Применяем смещение
+                canvasTranslateTransform.X = -offsetX;
+                canvasTranslateTransform.Y = -offsetY;
             }
         }
 
@@ -468,10 +498,40 @@ namespace InterfaceView.View
             if (element == canvas)
             {
                 // Если кликнули по пустому месту на Canvas, выводим сообщение "Canvas"
-               // MessageBox.Show("Canvas");
+                // MessageBox.Show("Canvas");
             }
             else if (element != null)
             {
+                // Проверяем, был ли это двойной клик
+                if ((DateTime.Now - _lastClickTime).TotalMilliseconds < 300) // 300 мс - интервал для двойного клика
+                {
+                    // Освобождаем захват мыши перед показом модального окна
+                    if (element.IsMouseCaptured)
+                    {
+                        element.ReleaseMouseCapture();
+                    }
+
+                    // Сбрасываем флаг перетаскивания
+                    _isDragging = false;
+
+                    // Открываем модальное окно
+                    if(element is RemoteDevice device)
+                    {
+                        new RegistryView(device.ViewControlName).ShowDialog();
+                    }
+                    else if (element is Sotka1 sotka)
+                    {
+                        new Sotka1Viewer(sotka.Clone()).ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show(element.GetType().ToString());
+                    }
+                    
+                }
+
+                _lastClickTime = DateTime.Now; // Обновляем время последнего клика
+
                 // Если кликнули по дочернему элементу, вызываем обработчик этого элемента
                 element.RaiseEvent(e);
             }

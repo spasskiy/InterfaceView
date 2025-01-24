@@ -42,7 +42,7 @@
         <Button  Style="{StaticResource TopButton}"  Grid.Column="7"  >
             <Image Source="/View/Icons/DisPoll.png" />
         </Button>
-        <Button  Style="{StaticResource TopButton}"  Grid.Column="8"  >
+        <Button  Style="{StaticResource TopButton}"  Grid.Column="8"  Click="OpenSotk2Promo">
             <Image Source="/View/Icons/zaprosData.png" />
         </Button>
         
