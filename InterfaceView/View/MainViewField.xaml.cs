@@ -523,9 +523,9 @@ namespace InterfaceView.View
                     {
                         new Sotka1Viewer(sotka.Clone()).ShowDialog();
                     }
-                    else
+                    else if (element is Sotka2 sotka2)
                     {
-                        MessageBox.Show(element.GetType().ToString());
+                        new LPUWindow(sotka2.Clone()).ShowDialog();
                     }
                     
                 }

@@ -85,6 +85,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dragablz" Version="0.0.3.234" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+    <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="5.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="canvasData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

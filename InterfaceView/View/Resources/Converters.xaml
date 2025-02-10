@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:localView="clr-namespace:InterfaceView.View">
+    <!-- Конвертеры -->
+    <localView:BooleanToTextConverter x:Key="BooleanToTextConverter"/>
+    <localView:BooleanToBrushConverter x:Key="BooleanToBrushConverter"
+                                       TrueBrush="#4CAF50"
+                                       FalseBrush="#F44336"/>      
+    
+</ResourceDictionary>

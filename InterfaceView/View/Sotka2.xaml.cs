@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using InterfaceView.Model;
+using LiveCharts;
+using System.Timers;
 
 namespace InterfaceView.View
 {
@@ -24,6 +26,9 @@ namespace InterfaceView.View
     /// </summary>
     public partial class Sotka2 : UserControl, IViewControl, INotifyPropertyChanged
     {
+        // Коллекция для хранения истории значений ActiveNodes
+        public ChartValues<int> ActiveNodesValues { get; set; }
+
         private string _viewControlType;
         public string ViewControlType
         {
@@ -80,6 +85,15 @@ namespace InterfaceView.View
             ViewControlName = name;
             ViewControlType = "Sotka2";
             DataContext = this;
+
+            // Инициализация коллекции для графика
+            ActiveNodesValues = new ChartValues<int>();
+
+            // Инициализация таймера
+            var updateTimer = new System.Timers.Timer(3000); // Обновление каждые 3 секунды
+            updateTimer.Elapsed += OnUpdateTimerElapsed;
+            updateTimer.AutoReset = true;
+            updateTimer.Enabled = true;
 
             Elements = new ObservableCollection<IViewControl>();
             Elements.CollectionChanged += Elements_CollectionChanged;
@@ -141,6 +155,60 @@ namespace InterfaceView.View
         {
             Elements.Add(element);
         }
+
+        public Sotka2 Clone()
+        {
+            // Создаем новый объект Sotka2 с теми же параметрами
+            var clone = new Sotka2(this.ViewControlName, this.IPAddress.ToString())
+            {
+                ViewControlType = this.ViewControlType,
+                Parent = this.Parent, // Если Parent должен быть скопирован, иначе оставьте null
+                IsActive = this.IsActive,
+                ActiveNodes = this.ActiveNodes,
+                CountOfNodes = this.CountOfNodes
+            };
+
+            // Копируем элементы коллекции Elements
+            foreach (var element in this.Elements)
+            {
+                var cloneMethod = element.GetType().GetMethod("Clone");
+                if (cloneMethod != null && cloneMethod.ReturnType != typeof(void))
+                {
+                    // Если метод Clone существует и возвращает значение, вызываем его
+                    var clonedElement = cloneMethod.Invoke(element, null);
+                    if (clonedElement is IViewControl clonedViewControl)
+                    {
+                        clone.AddChildren(clonedViewControl);
+                    }
+                }
+                else
+                {
+                    // Если метод Clone отсутствует, добавляем элемент как есть
+                    clone.AddChildren(element);
+                }
+            }
+
+            return clone;
+        }
+
+        //Заморочки для отображения графика
+        private void OnUpdateTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            // Обновление данных на UI-потоке
+            Dispatcher.Invoke(() =>
+            {
+                // Добавляем текущее количество активных узлов
+                ActiveNodesValues.Add(ActiveNodes);
+
+                // Ограничиваем количество точек на графике (например, последние 10 значений)
+                if (ActiveNodesValues.Count > 10)
+                {
+                    ActiveNodesValues.RemoveAt(0);
+                }
+            });
+        }
+        // Форматирование оси X (время)
+        public Func<double, string> XAxisFormatter => value => $"{value * 3} сек";
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
